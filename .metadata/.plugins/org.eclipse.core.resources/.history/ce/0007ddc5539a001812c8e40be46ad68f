@@ -1,0 +1,63 @@
+package Paginas;
+import org.openqa.selenium.WebDriver;
+
+
+import DSL.DSL;
+
+public class LoginPage {
+	
+	private DSL dsl;
+	private WebDriver driver;
+	
+	public LoginPage(WebDriver driver) {
+	this.driver = driver;
+	dsl = new DSL(driver);
+	
+	}
+	
+	//Método para se entrar com um prefixo na página de login
+	public void SetPrefixo(String texto) {
+		dsl.escreveXpath("//input[@formcontrolname='prefixo']", texto);
+	}
+	
+	//Método para se entrar com um código de agente na página de login
+	public void setCodigoAgente(String texto) {
+		dsl.escreveXpath("//input[@formcontrolname='cod_agente']", texto);		
+	}
+	
+	//Método para se entrar com um ramal na página de login
+	public void setRamal(String texto) {
+		dsl.escreveXpath("//input[@formcontrolname='ramal']", texto);
+	}
+	
+	//Método para se clicar no botão de login na página de login
+	public void buttonLogin() {
+		dsl.clicaXpath(("//button[contains(.,'Login')]"));
+	}
+	
+	//Método para se clicar no botão de logout na página de login
+	public void buttonLogout() {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}	
+		dsl.clicaXpath(("//button[contains(.,'Logout')]"));
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	//Método para se limpar todos os campos da página de login
+	public void clearFields() {
+		dsl.clearXpath("//input[@formcontrolname='prefixo']");
+		dsl.clearXpath("//input[@formcontrolname='cod_agente']");
+		dsl.clearXpath("//input[@formcontrolname='ramal']");
+	}
+	
+	
+	
+
+}

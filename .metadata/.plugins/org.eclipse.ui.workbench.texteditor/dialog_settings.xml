@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="tabula@Afterpublicublciiccsdsafdsfdsfdsvoi fifina"/>
+			<item value="tabula"/>
+			<item value="displaychamadasag"/>
+			<item value="displaycelulasage"/>
+			<item value="lista"/>
+			<item value="contar"/>
+			<item value="selec"/>
+			<item value="select"/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+</section>

@@ -1,0 +1,147 @@
+package DSL;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class DSL {
+
+
+	public WebDriver driver;
+	
+	public DSL(WebDriver driver) {
+		this.driver = driver;
+
+   
+		
+	}
+	
+	//Método para escrever em um campo lozalizado por id
+	public void escreveId(String id_campo, String texto) {		
+		driver.findElement(By.id(id_campo)).sendKeys(texto);
+	}
+	
+	//Método para escrever em um campo localizado por nome
+	public void escreveNome(String id_campo, String texto) {
+		driver.findElement(By.name(id_campo)).sendKeys(texto);
+	}
+	
+	//Método para escrever em um campo localizado por xpath
+	public void escreveXpath(String id_campo, String texto) {
+		driver.findElement(By.xpath(id_campo)).sendKeys(texto);
+	}
+	
+	//Método para clicar em elementos localizados por link text
+	public void clicaLink(String id_campo) {
+		driver.findElement(By.linkText(id_campo)).click();
+	}
+	
+	//Método para clicar em elementos localizados por nome
+	public void clicaNome(String id_campo) {
+		driver.findElement(By.name(id_campo)).click();
+	}
+	
+	//Método para se clicar em elementos localizados por cssSelector
+	public void clicaCss(String cssSelector_campo) {
+		driver.findElement(By.cssSelector(cssSelector_campo)).click();
+	}
+	
+	//Método para se clicar em elementos localizados por xpath
+		public void clicaXpath(String id_campo) {
+			driver.findElement(By.xpath(id_campo)).click();
+	}
+ 
+	//Método para se comparar textos via CSS
+	public void comparaCSS(String esperado, String atual) {
+		Assert.assertEquals(esperado, driver.findElement(By.cssSelector(atual)).getText());
+	}
+	
+	//Método para se comparar textos via tag
+	public void comparaTag(String esperado, String atual) {
+		Assert.assertEquals(esperado, driver.findElement(By.tagName(atual)).getText());
+	}
+	
+	//Método para se comparar textos via xpath
+	public void comparaXpath(String esperado, String atual) {
+		Assert.assertEquals(esperado, driver.findElement(By.xpath(atual)).getText());
+	}
+	
+	//Método para se selecionar elemento dentro de lista
+	public void selecionaLista(String id_campo, String opcao) {
+		Select multicombo = new Select(driver.findElement(By.name(id_campo)));
+		multicombo.selectByVisibleText(opcao);
+	}
+	
+	//Método para esperar a página ser carregada
+	public void waitForPage() {
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	}
+	
+	//Método para se limpar campos lozalizados por xpath
+	public void clearXpath(String id_campo) {
+		driver.findElement(By.xpath(id_campo)).clear();
+	}
+	
+	//Método para se alterar foco para o alerta
+	public void alerta() {
+	driver.switchTo().alert();
+	}
+	
+	//Método para se esperar segundos
+	public void waitSeconds(int tempo) {
+		try {
+			Thread.sleep(tempo);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//Método para se encontrar texto por xpath
+	public void encontraXpth(String texto) {
+		driver.findElement(By.xpath(texto));
+	}
+	
+	//Método para mandar ENTER
+	public void sendKeysEnter(String id_campo) {
+		driver.findElement(By.xpath(id_campo)).sendKeys(Keys.ENTER);
+	}
+
+	//Método para saber se um elemento está presente na página
+	public void checkElementPresence(String id_campo1, String id_campo2) {
+		if(driver.findElements(By.xpath(id_campo1)).size() != 0){
+		System.out.println("célula já desmarcada!");
+			}else{
+			driver.findElement(By.xpath(id_campo2)).click();
+			}
+	}
+	
+	//Método para se contar elementos de uma lista
+	public void countElementsList(String id_campo) {
+
+		List<WebElement> dropdown = driver.findElements(By.xpath(id_campo));
+		int count = dropdown.size();
+		if (count > 2) {
+		Assert.fail();
+		}
+	}
+	
+	//Método para se tirar screenshots
+	public void takeScreenShot() throws IOException {
+		  File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		  FileUtils.copyFile(scrFile, new File("C:\\Users\\bruno.muramatsu\\Desktop\\Evidências\teste.png"));
+	}
+	
+}

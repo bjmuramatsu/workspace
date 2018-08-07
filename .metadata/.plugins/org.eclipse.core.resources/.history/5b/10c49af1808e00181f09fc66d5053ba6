@@ -1,0 +1,88 @@
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import DSL.DSL;
+import Paginas.CamposPersonalizadosPage;
+import Paginas.CelulasPage;
+import Paginas.ConfiguraCelulasPage;
+import Paginas.HomePage;
+import Paginas.LoginPage;
+import Paginas.PausasPage;
+import Paginas.PermissoesPage;
+import Paginas.UsuariosPage;
+
+public class PermissoesSuite {
+
+	private WebDriver driver;
+	private LoginPage loginpage;
+	private HomePage homepage;
+	private CelulasPage celulaspage;
+	private ConfiguraCelulasPage configuracelulaspage;
+	private CamposPersonalizadosPage campospersonalizadospage;
+	private UsuariosPage usuariospage;
+	private PausasPage pausaspage;
+	private PermissoesPage permissoespage;
+	private DSL dsl;
+	
+	
+	
+	//Método que será executado antes de todos os testes 
+	@Before()
+	public void inicializa() {
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\bruno.muramatsu\\chromedriver\\chromedriver.exe");
+	driver = new ChromeDriver();
+//	System.setProperty("webdriver.gecko.driver", "C:\\Users\\bruno.muramatsu\\geckodriver\\geckodriver.exe");
+//	driver = new FirefoxDriver();
+	driver.get("https://192.168.2.53:4200/");
+	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	loginpage = new LoginPage(driver);
+	homepage = new HomePage(driver);
+	celulaspage = new CelulasPage(driver);
+	configuracelulaspage = new ConfiguraCelulasPage(driver);
+	campospersonalizadospage = new CamposPersonalizadosPage(driver);
+	usuariospage = new UsuariosPage(driver);
+	pausaspage = new PausasPage(driver);
+	permissoespage = new PermissoesPage(driver);
+	dsl = new DSL(driver);
+	
+	//Faz o login no sistema
+	loginpage.clearFields();
+	loginpage.SetPrefixo("tes");
+	loginpage.setCodigoAgente("1092");
+	loginpage.setRamal("2522");
+	loginpage.buttonLogout();
+	loginpage.buttonLogin();
+	homepage.validalogin();
+	
+	}
+	
+	//Teste para exebição de células para agentes
+	@Test()
+	public void displayCelulasAgentes() {
+		homepage.openMenuPermissoes();
+		permissoespage.unselectAllSelectdPermissionsAgentes();
+		permissoespage.displayCelulasAgentes();
+		
+	}
+	
+	@Test
+	public void testecointagem() {
+//		homepage.openMenuPermissoes();
+//		permissoespage.unselectAllSelectdPermissionsAgentes();
+//		permissoespage.displayCelulasAgentes();
+		driver.findElement(By.xpath("//div[@class='collapse navbar-collapse']//li[@class='nav-item dropdown']")).click();
+		List<WebElement> dropdown = driver.findElements(By.xpath("//div[@class='collapse navbar-collapse']//li[1]//div[@class='dropdown-menu show']"));
+		int count = dropdown.size();
+		System.out.println(count);
+		
+	}
+	
+		
+}	

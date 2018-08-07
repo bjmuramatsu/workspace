@@ -1,0 +1,95 @@
+package Paginas;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+public class PerfisPage {
+
+	//Método para se logar como agente
+	public static void loginAsAgente(String prefixo, String codigoAgente, String ramal) throws InterruptedException {
+		
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\bruno.muramatsu\\chromedriver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("https://192.168.2.53:4200/");
+		driver.findElement(By.xpath("//input[@formcontrolname='prefixo']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='cod_agente']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='ramal']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='prefixo']")).sendKeys(prefixo);
+		driver.findElement(By.xpath("//input[@formcontrolname='cod_agente']")).sendKeys(codigoAgente);
+		driver.findElement(By.xpath("//input[@formcontrolname='ramal']")).sendKeys(ramal);
+		driver.findElement(By.xpath("//button[contains(.,'Logout')]")).click();
+		driver.findElement(By.xpath("//button[contains(.,'Login')]")).click();
+		WebDriverWait wait = new WebDriverWait(driver, 480);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(.,'Aguardando chamada...')]")));
+		driver.findElement(By.xpath("//span[contains(@class,'oi oi-menu')]")).click();
+		driver.findElement(By.xpath("//a[contains(.,'Usuários')]")).click();
+		driver.findElement(By.xpath("//td[contains(.,'1092')]//following::td[3]/button")).click();
+		driver.findElement(By.xpath("//div[@class='modal-dialog']//div[@class='modal-body']//div[@class='form-group divDropDown padding-top-form-group']")).click();
+		driver.findElement(By.xpath("//div[@class='modal-dialog']//div[@class='modal-body']//div[@class='form-group divDropDown padding-top-form-group']//li/span[contains(.,'Agentes')]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//div[@Class='modal-content']//button[contains(.,'Alterar')]")).click();
+		driver.quit();
+	}
+	
+	//Método para se logar como supervisor
+	public static void loginAsSupervisor(String prefixo, String codigoAgente, String ramal) {
+		
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\bruno.muramatsu\\chromedriver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("https://192.168.2.53:4200/");
+		driver.findElement(By.xpath("//input[@formcontrolname='prefixo']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='cod_agente']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='ramal']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='prefixo']")).sendKeys(prefixo);
+		driver.findElement(By.xpath("//input[@formcontrolname='cod_agente']")).sendKeys(codigoAgente);
+		driver.findElement(By.xpath("//input[@formcontrolname='ramal']")).sendKeys(ramal);
+		driver.findElement(By.xpath("//button[contains(.,'Logout')]")).click();
+		driver.findElement(By.xpath("//button[contains(.,'Login')]")).click();
+		WebDriverWait wait = new WebDriverWait(driver, 480);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(.,'Aguardando chamada...')]")));
+		driver.findElement(By.xpath("//span[contains(@class,'oi oi-menu')]")).click();
+		driver.findElement(By.xpath("//a[contains(.,'Usuários')]")).click();
+		driver.findElement(By.xpath("//td[contains(.,'1092')]//following::td[3]/button")).click();
+		driver.findElement(By.xpath("//div[@class='modal-dialog']//div[@class='modal-body']//div[@class='form-group divDropDown padding-top-form-group']")).click();
+		driver.findElement(By.xpath("//div[@class='modal-dialog']//div[@class='modal-body']//div[@class='form-group divDropDown padding-top-form-group']//li/span[contains(.,'Supervisor')]")).click();
+		driver.findElement(By.xpath("//div[@Class='modal-content']//button[contains(.,'Alterar')]")).click();
+		driver.quit();
+	}
+	
+	//Método para se logar como administrador
+public static void loginAsAdministrador(String prefixo, String codigoAgente, String ramal) {
+		
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\bruno.muramatsu\\chromedriver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("https://192.168.2.53:4200/");
+		driver.findElement(By.xpath("//input[@formcontrolname='prefixo']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='cod_agente']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='ramal']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='prefixo']")).sendKeys(prefixo);
+		driver.findElement(By.xpath("//input[@formcontrolname='cod_agente']")).sendKeys(codigoAgente);
+		driver.findElement(By.xpath("//input[@formcontrolname='ramal']")).sendKeys(ramal);
+		driver.findElement(By.xpath("//button[contains(.,'Logout')]")).click();
+		driver.findElement(By.xpath("//button[contains(.,'Login')]")).click();
+		WebDriverWait wait = new WebDriverWait(driver, 480);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(.,'Aguardando chamada...')]")));
+		driver.findElement(By.xpath("//span[contains(@class,'oi oi-menu')]")).click();
+		driver.findElement(By.xpath("//a[contains(.,'Usuários')]")).click();
+		driver.findElement(By.xpath("//td[contains(.,'1092')]//following::td[3]/button")).click();
+		driver.findElement(By.xpath("//div[@class='modal-dialog']//div[@class='modal-body']//div[@class='form-group divDropDown padding-top-form-group']")).click();
+		driver.findElement(By.xpath("//div[@class='modal-dialog']//div[@class='modal-body']//div[@class='form-group divDropDown padding-top-form-group']//li/span[contains(.,'Administrador')]")).click();
+		driver.findElement(By.xpath("//div[@Class='modal-content']//button[contains(.,'Alterar')]")).click();
+		driver.quit();
+	}
+}

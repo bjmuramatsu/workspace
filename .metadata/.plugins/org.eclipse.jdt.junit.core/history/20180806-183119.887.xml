@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CelulasSuite" project="AWS" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="CelulasSuite" time="61.676">
+    <testcase name="campoNomeLimiteSuperior" classname="CelulasSuite" time="27.47"/>
+    <testcase name="validaCriaçãoCélula" classname="CelulasSuite" time="34.206"/>
+  </testsuite>
+</testrun>

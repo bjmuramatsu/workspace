@@ -1,0 +1,41 @@
+package Paginas;
+import java.util.List;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import DSL.DSL;
+
+public class CelulasPage {
+	
+	private DSL dsl;
+	public WebDriver driver;
+	
+	public CelulasPage(WebDriver driver) {
+		this.driver = driver;
+		dsl = new DSL(driver);
+	}
+	
+	public void escreveNome(String texto) {
+		dsl.escreveId("\"//input[@formcontrolname='nome']\"", texto);
+		
+	}
+	
+	public void selecionaTipoCelula(String tipo) {
+		
+		dsl.clicaXpath("//button[contains(@ngbtooltip,'Nova Operação')]");
+		dsl.clicaXpath("//div[3]/span");
+		if (tipo == "ativo") {
+			dsl.clicaXpath("//div[2]/ul/li//span[./text()='Ativo']");
+		} else if (tipo == "recepetivo") {
+			dsl.clicaXpath("//div[2]/ul/li//span[./text()='Receptivo']");
+		} else if (tipo == "Ativo/Receptivo") {
+			dsl.clicaXpath("//div[2]/ul/li//span[./text()='Ativo/Receptivo']");
+		}
+	}
+}

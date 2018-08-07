@@ -1,0 +1,159 @@
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import DSL.DSL;
+import Paginas.CamposPersonalizadosPage;
+import Paginas.CelulasPage;
+import Paginas.ConfiguraCelulasPage;
+import Paginas.HomePage;
+import Paginas.LoginPage;
+import Paginas.PausasPage;
+import Paginas.PermissoesPage;
+import Paginas.UsuariosPage;
+
+public class PermissoesAgentesSuite {
+
+	private WebDriver driver;
+	private LoginPage loginpage;
+	private HomePage homepage;
+	private CelulasPage celulaspage;
+	private ConfiguraCelulasPage configuracelulaspage;
+	private CamposPersonalizadosPage campospersonalizadospage;
+	private UsuariosPage usuariospage;
+	private PausasPage pausaspage;
+	private PermissoesPage permissoespage;
+	private DSL dsl;
+
+	// Método que será executado antes de todos os testes
+	@Before()
+	public void inicializa() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\bruno.muramatsu\\chromedriver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		//	System.setProperty("webdriver.gecko.driver", "C:\\Users\\bruno.muramatsu\\geckodriver\\geckodriver.exe");
+		//	driver = new FirefoxDriver();
+		driver.get("https://192.168.2.53:4200/");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		loginpage = new LoginPage(driver);
+		homepage = new HomePage(driver);
+		celulaspage = new CelulasPage(driver);
+		configuracelulaspage = new ConfiguraCelulasPage(driver);
+		campospersonalizadospage = new CamposPersonalizadosPage(driver);
+		usuariospage = new UsuariosPage(driver);
+		pausaspage = new PausasPage(driver);
+		permissoespage = new PermissoesPage(driver);
+		dsl = new DSL(driver);
+		homepage.fazLogin();
+		int contador = 0;
+		contador ++;
+		if (contador == 1) {
+		usuariospage.setPerfilAgente();
+		} else {
+			System.out.println("logado como agente!");
+		}
+	}
+
+	@After
+	public void finaliza() {
+		driver.quit();
+	}
+	
+	// Teste para exebição de células para agentes (logar como agente)
+	@Test()
+	public void displayCelulasAgentes() {
+		homepage.openMenuPermissoes();
+		permissoespage.displayCelulasAgentes();
+		dsl.waitSeconds(5000);
+		homepage.logout();
+		homepage.fazLogin();
+		homepage.openMenuCelulas();
+
+	}
+	
+	// Teste para exibição de chamadas para agentes (logar como agente)
+	@Test()
+	public void displayChamadasAgentes() {
+		homepage.openMenuPermissoes();
+		permissoespage.displayChamadasAgentes();
+		dsl.waitSeconds(5000);
+		homepage.logout();
+		homepage.fazLogin();
+		homepage.openMenuChamadas();
+
+	}
+
+	// Teste para exibição de operações para agentes (logar como agente)
+	@Test()
+	public void displayOperacoesAgentes() {
+		homepage.openMenuPermissoes();
+		permissoespage.displayOperacoesAgentes();
+		dsl.waitSeconds(5000);
+		homepage.logout();
+		homepage.fazLogin();
+		homepage.openMenuOperacoes();
+
+	}
+
+	// Teste para exibição de usuários para agentes (logar como agente)
+	@Test()
+	public void displayUsuariosAgentes() {
+		homepage.openMenuPermissoes();
+		permissoespage.displayUsuariosAgentes();
+		dsl.waitSeconds(5000);
+		homepage.logout();
+		homepage.fazLogin();
+		homepage.openMenuUsuarios();
+	}
+
+	// Teste para exibição de relatórios para agentes (logar como agente)
+	@Test()
+	public void displayRelatoriosAgentes() {
+		homepage.openMenuPermissoes();
+		permissoespage.displayRelatoriosAgentes();
+		dsl.waitSeconds(5000);
+		homepage.logout();
+		homepage.fazLogin();
+		homepage.openMenuRelatorios();
+	}
+
+	// Teste para exibição de configurações de CTI para agentes (logar como agente)
+	@Test()
+	public void displayConfigCTIAgentes() {
+		homepage.openMenuPermissoes();
+		permissoespage.displayConfigCTIAgentes();
+		dsl.waitSeconds(5000);
+		homepage.logout();
+		homepage.fazLogin();
+		homepage.openMenuConfigCTI();
+	}
+
+	// Teste para exibição de configurações gerais para agentes (logar como agente)
+	@Test()
+	public void displayConfigGeralAgentes() {
+		homepage.openMenuPermissoes();
+		permissoespage.displayConfigGeralAgentes();
+		dsl.waitSeconds(5000);
+		homepage.logout();
+		homepage.fazLogin();
+		homepage.openMenuConfigGeral();
+	}
+	
+	// Teste para exibição de motivos de pausa para agentes (Logar como agente)
+	@Test()
+	public void displayMotivosPausaAgentes() {
+		homepage.openMenuPermissoes();
+		permissoespage.displayMotivosPausaAgentes();
+		dsl.waitSeconds(5000);
+		homepage.logout();
+		homepage.fazLogin();
+		homepage.openMenuMotivosPausa();
+		
+	}
+}

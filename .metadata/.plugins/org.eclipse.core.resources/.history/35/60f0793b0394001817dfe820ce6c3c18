@@ -1,0 +1,349 @@
+package Paginas;
+
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import DSL.DSL;
+
+public class PermissoesPage {
+
+	private DSL dsl;
+	private WebDriver driver;
+
+	public PermissoesPage(WebDriver driver) {
+		this.driver = driver;
+		dsl = new DSL(driver);
+
+	}
+
+	// Método para se habilitar a visão de células para agentes
+	public void displayCelulasAgentes() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Células')]//following::td[1]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de chamadas para agentes
+	public void displayChamadasAgentes() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Chamadas')]//following::td[1]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de usuários para agentes
+	public void displayUsuariosAgentes() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Usuários')]//following::td[1]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de tabulações para agentes
+	public void displayTabulacoesAgentes() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Tabulações')]//following::td[1]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de relatórios para agentes
+	public void displayRelatoriosAgentes() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Relatórios')]//following::td[1]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de permissões para agentes
+	public void displayPermissoesAgentes() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Permissões')]//following::td[1]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de operações para agentes
+	public void displayOperacoesAgentes() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Operações')]//following::td[1]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de configurações CTI para agentes
+	public void displayConfigCTIAgentes() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'CTI')]//following::td[1]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// método para se habilitar a visão de configurações gerais para agentes
+	public void displayConfigGeralAgentes() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Configuração Geral')]//following::td[1]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de células para supervisores
+	public void displayCelulasSupervisores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Células')]//following::td[2]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de chamadas para supervisores
+	public void displayChamadasSupervisores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Chamadas')]//following::td[2]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de usuários para supervisores
+	public void displayUsuariosSupervisores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Usuários')]//following::td[2]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de tabulações para supervisores
+	public void displayTabulacoesSupervisores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Tabulações')]//following::td[2]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	//
+	// Método para se habilitar a visão de relatórios para supervisores
+	public void displayRelatoriosSupervisores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Relatórios')]//following::td[2]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de permissões para supervisores
+	public void displayPermissoesSupervisores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Permissões')]//following::td[2]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de operações para supervisores
+	public void displayOperacoesSupervisores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Operações')]//following::td[2]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de configuração CTI para supervisores
+	public void displayConfigCTISupervisores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Configuração CTI')]//following::td[2]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de configurações gerais para supervisores
+	public void displayConfigGeralSupervisores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Configuração Geral')]//following::td[2]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de células para administradores
+	public void displayCelulasAdministradores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Células')]//following::td[3]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de chamadas para administradores
+	public void displayChamadasAdministradores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Chamadas')]//following::td[3]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de usuários para administradores
+	public void displayUsuariosAdministradores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Usuários')]//following::td[3]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de tabulações para administradores
+	public void displayTabulacoesAdministradores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Tabulações')]//following::td[3]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de relatórios para administradores
+	public void displayRelatoriosAdministradores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Relatórios')]//following::td[3]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de permissões para administradores
+	public void displayPermissoesAdministradores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Permissões')]//following::td[3]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de operações para administradores
+	public void displaysOperacoesAdministradores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Operações')]//following::td[3]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visão de configuração CTI para administradores
+	public void displayConfigCTIAdministradores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Configuração CTI')]//following::td[3]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se habilitar a visãi de configurações gerais para administradores
+	public void displayConfigGeralAdministradores() {
+		dsl.clicaXpath(
+				"//td[1][contains(.,'Configuração Geral')]//following::td[3]//p-checkbox[@class='ng-untouched ng-pristine ng-valid']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+		dsl.clicaXpath("//button[contains(.,'Confirmar')]");
+	}
+
+	// Método para se desmarcar todas as opções marcadas nos agentes
+	public void unselectAllSelectdPermissionsAgentes() {
+
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Células')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Células')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Chamadas')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Chamadas')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Usuários')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Usuários')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Tabulações')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Tabulações')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Relatórios')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Relatórios')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Permissões')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Permissões')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Operações')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Operações')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'CTI')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'CTI')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Configuração Geral')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Configuração Geral')]//following::td[1]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+
+	}
+
+	// Método para se desmarcar todas as operações marcadas nos supervisores
+	public void unselectAllSelectedPermissionsSupervisores() {
+
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Células')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Células')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Chamadas')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Chamadas')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Usuários')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Usuários')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Tabulações')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Tabulações')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Relatórios')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Relatórios')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Permissões')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Permissões')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Operações')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Operações')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'CTI')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'CTI')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Configuração Geral')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Configuração Geral')]//following::td[2]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+
+	}
+
+	// Método para se desmarcar todas as operações marcadas nos administradores
+	public void unselectAllSelectedPermissionsAdministradores() {
+
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Células')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Células')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Chamadas')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Chamadas')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Usuários')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Usuários')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Tabulações')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Tabulações')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Relatórios')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Relatórios')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Permissões')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Permissões')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Operações')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Operações')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'CTI')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'CTI')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.checkElementPresence(
+				"//td[1][contains(.,'Configuração Geral')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable']",
+				"//td[1][contains(.,'Configuração Geral')]//following::td[3]/p-checkbox/div/div[2]/span[@class='ui-chkbox-icon ui-clickable pi pi-check']");
+		dsl.clicaXpath("//button[contains(.,'Salvar')]");
+
+	}
+
+	// Método para se contar o número de permissões mostradas na lista
+	public void countPermissoesDisponiveis() {
+		driver.findElement(By.xpath("//div[@class='collapse navbar-collapse']//li[@class='nav-item dropdown']"))
+				.click();
+		dsl.countElementsList("//div[@class='collapse navbar-collapse']//li[1]//div[@class='dropdown-menu show']/a");
+
+	}
+
+}

@@ -1,0 +1,132 @@
+package Paginas;
+import java.util.List;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import DSL.DSL;
+
+public class CelulasPage {
+	
+	private DSL dsl;
+	public WebDriver driver;
+	
+	public CelulasPage(WebDriver driver) {
+		this.driver = driver;
+		dsl = new DSL(driver);
+	}
+	
+	//Método para se clicar em adicionar nova célula
+	public void addCelula() {
+		dsl.clicaXpath(("//button[contains(.,'NOVA CÉLULA')]"));
+		
+	}
+	
+	//Método para se preencher o nome de uma célula
+	public void setNomeCelula(String texto) {
+		dsl.escreveXpath("//input[@placeholder='Nome da Célula']", texto);
+		dsl.waitSeconds(2);
+	}
+	
+	//Método para se clicar no botão de criar nova célula
+	public void buttonCriar() {
+		WebDriverWait wait = new WebDriverWait(driver, 120);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(.,'CRIAR')]")));
+		dsl.clicaXpath("//button[contains(.,'CRIAR')]");
+	}
+	
+	//Método para se clicar no botão de alterar célula
+	public void buttonAlterar() {
+	    dsl.clicaXpath("//button[contains(.,'ALTERAR')]");
+		
+	}
+	
+	//Método para se clicar no botão de configurar célula
+	public void buttonConfigurar(String texto) {
+		try {
+			dsl.clicaXpath("//td[contains(.,'"+texto+"')]//following::td[4]//button[@class='btn btn-info']");
+		}
+		catch(org.openqa.selenium.StaleElementReferenceException ex)
+		{
+			dsl.clicaXpath("//td[contains(.,'"+texto+"')]//following::td[4]//button[@class='btn btn-info']");
+		}
+	}
+	
+	//Método para se clicar no botão de campos personalizados
+	public void buttonCamposPersonalidados(String texto) {
+		WebDriverWait wait = new WebDriverWait(driver, 120);
+		
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[contains(.,'"+texto+"')]//following::td[5]//button[@class='btn btn-secondary']")));
+			dsl.clicaXpath("//td[contains(.,'"+texto+"')]//following::td[5]//button[@class='btn btn-secondary']");
+		}
+		catch(org.openqa.selenium.StaleElementReferenceException ex)
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[contains(.,'"+texto+"')]//following::td[5]//button[@class='btn btn-secondary']")));
+			dsl.clicaXpath("//td[contains(.,'"+texto+"')]//following::td[5]//button[@class='btn btn-secondary']");
+		}
+	}
+	
+	//Método para se validar se uma célula foi criada com sucesso
+	public void validaCriacaoCelula(String texto, String texto2) {
+		try {
+			dsl.comparaXpath(texto, "//td[1][contains(.,'"+texto2+"')]");
+		}
+		catch(org.openqa.selenium.StaleElementReferenceException ex)
+		{
+			dsl.comparaXpath(texto, "//td[1][contains(.,'"+texto2+"')]");
+		}
+	}
+	
+	//Método para se desativar uma célula
+	public void desativaCelula(String texto) {
+		dsl.clicaXpath("//td[contains(.,'" +texto+"')]//following::td[1]/label//span[@class='slider round']");
+	}     
+	
+	//Método para se excluir uma célula
+	public void buttonExcluiCelula(String texto) {
+		dsl.clicaXpath("//td[1][contains(.,'"+texto+"')]//following::td[3]//button[@class='btn btn-danger']");
+		dsl.clicaCss("div.modal-footer > button.btn.btn-danger");
+	}
+	
+	//Método para editar o nome de uma célula
+	public void editaNomeCelula(String texto, String texto2) {
+		try {
+			dsl.clicaXpath("//td[1][contains(.,'"+texto+"')]//following::td[2]//button[@class='btn btn-primary']");
+			dsl.clearXpath("//input[@placeholder='Nome da Célula']");	
+			dsl.escreveXpath("//input[@placeholder='Nome da Célula']", texto2);
+		}
+		catch(org.openqa.selenium.StaleElementReferenceException ex)
+		{
+			dsl.clicaXpath("//td[1][contains(.,'"+texto+"')]//following::td[2]//button[@class='btn btn-primary']");
+			dsl.clearXpath("//input[@placeholder='Nome da Célula']");	
+			dsl.escreveXpath("//input[@placeholder='Nome da Célula']", texto2);
+		}
+	}
+	
+	//Método para se procurar por uma célula
+	public void procuraCelula(String texto) {
+		dsl.clearXpath("//input[@placeholder='Procurar célula...']");
+		dsl.escreveXpath("//input[@placeholder='Procurar célula...']", texto);
+		dsl.sendKeysEnter("//input[@placeholder='Procurar célula...']");
+	}
+	
+	//Método para se contar quantos resultados retornaram da pesquisa
+	public void contaPesquisa() {		
+	List<WebElement> optionCount = driver.findElements(By.xpath("//tr/td[1]"));
+		if (optionCount.size() != 1) {
+			System.out.println("O numero de itens encontrados foi diferente de 1!");
+			Assert.fail();		
+		}
+	}
+	
+	//Método para se clicar no botão de pausas
+	public void buttonPausa(String texto) {
+		dsl.clicaXpath("//td[contains(.,'"+texto+"')]//following::td[7]//button[@class='btn btn-warning'])");
+	}
+}
