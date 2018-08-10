@@ -1,7 +1,6 @@
 package Paginas;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,12 +21,24 @@ public class HomePage {
 	}
 	
 	//Método para se fazer login
-	public void fazLogin() {
+	public void fazLogin(String prefixo, String codigo_agente, String ramal) {
 		loginpage.clearFields();
-		loginpage.SetPrefixo("tes");
-		loginpage.setCodigoAgente("1092");
-		loginpage.setRamal("2522");
+		loginpage.SetPrefixo(prefixo);
+		loginpage.setCodigoAgente(codigo_agente);
+		loginpage.setRamal(ramal);
 		loginpage.buttonLogout();
+		boolean erro1 =  driver.findElements(By.xpath("//div[contains(.,'Erro finalizando sessao, sessao do agente 6110 nao encontrada')]")).size() >0;
+	    boolean erro2 =  driver.findElements(By.xpath("//div[contains(.,'Sessao do agente 6110 ja existe')]")).size() >0;
+	    System.out.println(erro1);
+	    if (erro1 = true) {
+			loginpage.buttonLogin();
+		} else if (erro2 = true) {
+			loginpage.buttonLogout();
+			loginpage.buttonLogin();
+		}
+
+
+		
 		loginpage.buttonLogin();
 		validalogin();
 	}

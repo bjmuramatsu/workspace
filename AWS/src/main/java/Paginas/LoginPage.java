@@ -51,8 +51,4 @@ public class LoginPage {
 		dsl.clearXpath("//input[@formcontrolname='cod_agente']");
 		dsl.clearXpath("//input[@formcontrolname='ramal']");
 	}
-	
-	
-	
-
 }
